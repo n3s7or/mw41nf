@@ -64,12 +64,13 @@ def SetAutoRemenberPassword(self) -> dict:  # 1.10
 
 
 @bind_self
-def GetConnectionState(self) -> dict:  # 3.1
-    return request_json_rpc_sync(
-        self.__name__,
-        params='',
-        _id='3.1'
-    )
+def GetConnectionState(self) -> Response:  # 3.1
+    return Response(
+        request_json_rpc_sync(
+            self.__name__,
+            params='',
+            _id='3.1'
+        ))
 
 
 @bind_self

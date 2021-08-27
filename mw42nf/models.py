@@ -19,7 +19,7 @@ class Response:
             pprint(self._data, stream=stream)
             return stream.getvalue()
 
-    def __getattr__(self, key):
+    def __getitem__(self, key):
         """Get the entity's property"""
         getter = getattr(self, 'get_%s' % key, None)
         if callable(getter):
