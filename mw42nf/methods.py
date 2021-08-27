@@ -1,55 +1,57 @@
 from mw42nf import request_json_rpc_sync, bind_self
+from .models import Response
 
 
 # START User's functions
 @bind_self
-def Login(self) -> dict:    # 1.1
+def Login(self) -> dict:  # 1.1
     raise Exception('TODO')
 
 
 @bind_self
-def Logout(self) -> dict:    # 1.2
+def Logout(self) -> dict:  # 1.2
     raise Exception('TODO')
 
 
 @bind_self
-def GetLoginState(self) -> dict:    # 1.3
-    raise Exception('TODO')\
-
-
+def GetLoginState(self) -> dict:  # 1.3
+    raise Exception('TODO') \
+ \
+ \
 @bind_self
-def ChangePassword(self) -> dict:    # 1.4
+def ChangePassword(self) -> dict:  # 1.4
     raise Exception('TODO')
 
 
 @bind_self
-def HeartBeat(self) -> dict:    # 1.5
+def HeartBeat(self) -> dict:  # 1.5
     raise Exception('TODO')
 
 
 @bind_self
-def ForceLogin(self) -> dict:    # 1.6
+def ForceLogin(self) -> dict:  # 1.6
     raise Exception('TODO')
 
 
 @bind_self
-def SetPasswordChangeFlag(self) -> dict:    # 1.7
+def SetPasswordChangeFlag(self) -> dict:  # 1.7
     raise Exception('TODO')
 
 
 @bind_self
-def GetPasswordChangeFlag(self) -> dict:    # 1.8
+def GetPasswordChangeFlag(self) -> dict:  # 1.8
     raise Exception('TODO')
 
 
 @bind_self
-def GetAutoRemenberPassword(self) -> dict:    # 1.9
+def GetAutoRemenberPassword(self) -> dict:  # 1.9
     raise Exception('TODO')
 
 
 @bind_self
-def SetAutoRemenberPassword(self) -> dict:    # 1.10
+def SetAutoRemenberPassword(self) -> dict:  # 1.10
     raise Exception('TODO')
+
 
 # END User's functions
 # ==================================
@@ -62,15 +64,16 @@ def SetAutoRemenberPassword(self) -> dict:    # 1.10
 
 
 @bind_self
-def GetConnectionState(self) -> dict:       # 3.1
+def GetConnectionState(self) -> dict:  # 3.1
     return request_json_rpc_sync(
         self.__name__,
         params='',
         _id='3.1'
     )
 
+
 @bind_self
-def Connect(self) -> dict:          # 3.2
+def Connect(self) -> dict:  # 3.2
     return request_json_rpc_sync(
         self.__name__,
         params='',
@@ -79,7 +82,7 @@ def Connect(self) -> dict:          # 3.2
 
 
 @bind_self
-def DisConnect(self) -> dict:       # 3.3
+def DisConnect(self) -> dict:  # 3.3
     return request_json_rpc_sync(
         self.__name__,
         params='',
@@ -88,17 +91,19 @@ def DisConnect(self) -> dict:       # 3.3
 
 
 @bind_self
-def GetConnectionSettings(self) -> dict:    # 3.4
-    return request_json_rpc_sync(
-        self.__name__,
-        params='',
-        _id='3.4'
-    )
+def GetConnectionSettings(self) -> Response:  # 3.4
+    return Response(
+        request_json_rpc_sync(
+            self.__name__,
+            params='',
+            _id='3.4'
+        ))
 
 
 @bind_self
-def SetConnectionSettings(self) -> dict:    # 3.5
+def SetConnectionSettings(self) -> dict:  # 3.5
     raise Exception('TODO')
+
 
 # END Connection functions
 # ==================================
@@ -121,7 +126,7 @@ def SetConnectionSettings(self) -> dict:    # 3.5
 # START SMS functions
 
 @bind_self
-def GetSMSInitStatus(self) -> dict:     # 6.1
+def GetSMSInitStatus(self) -> dict:  # 6.1
     return request_json_rpc_sync(
         self.__name__,
         params='',
@@ -130,42 +135,42 @@ def GetSMSInitStatus(self) -> dict:     # 6.1
 
 
 @bind_self
-def GetSMSContactList(self) -> dict:    # 6.2
+def GetSMSContactList(self) -> dict:  # 6.2
     raise Exception('TODO')
 
 
 @bind_self
-def GetSMSContentList(self) -> dict:    # 6.3
+def GetSMSContentList(self) -> dict:  # 6.3
     raise Exception('TODO')
 
 
 @bind_self
-def GetSMSStorageState(self) -> dict:    # 6.4
+def GetSMSStorageState(self) -> dict:  # 6.4
     raise Exception('TODO')
 
 
 @bind_self
-def DeleteSMS(self) -> dict:    # 6.5
+def DeleteSMS(self) -> dict:  # 6.5
     raise Exception('TODO')
 
 
 @bind_self
-def SendSMS(self) -> dict:              # 6.6
+def SendSMS(self) -> dict:  # 6.6
     raise Exception('TODO')
 
 
 @bind_self
-def GetSendSMSResult(self) -> dict:     # 6.7
+def GetSendSMSResult(self) -> dict:  # 6.7
     raise Exception('TODO')
 
 
 @bind_self
-def SaveSMS(self) -> dict:              # 6.8
+def SaveSMS(self) -> dict:  # 6.8
     raise Exception('TODO')
 
 
 @bind_self
-def GetSMSSettings(self) -> dict:       # 6.9
+def GetSMSSettings(self) -> dict:  # 6.9
     return request_json_rpc_sync(
         self.__name__,
         params='',
@@ -174,12 +179,12 @@ def GetSMSSettings(self) -> dict:       # 6.9
 
 
 @bind_self
-def SetSMSSettings(self) -> dict:       # 6.10
+def SetSMSSettings(self) -> dict:  # 6.10
     raise Exception('TODO')
 
 
 @bind_self
-def GetSingleSMS(self) -> dict:         # 6.11
+def GetSingleSMS(self) -> dict:  # 6.11
     raise Exception('TODO')
 
 
@@ -196,17 +201,17 @@ def GetSingleSMS(self) -> dict:         # 6.11
 # START USSD functions
 
 @bind_self
-def SendUSSD(self) -> dict:             # 8.1
+def SendUSSD(self) -> dict:  # 8.1
     raise Exception('TODO')
 
 
 @bind_self
-def GetUSSDSendResult(self) -> dict:    # 8.2
+def GetUSSDSendResult(self) -> dict:  # 8.2
     raise Exception('TODO')
 
 
 @bind_self
-def SetUSSDEnd(self) -> dict:           # 8.3
+def SetUSSDEnd(self) -> dict:  # 8.3
     raise Exception('TODO')
 
 

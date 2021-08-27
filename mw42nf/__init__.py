@@ -16,3 +16,12 @@ def request_json_rpc_sync(method, params, _id) -> dict:
     url = "/jrd/webapi?api=" + method
 
     return services.post(url=url, data=data)
+
+
+# function requestJsonRpcIsOk(result) {
+#     return result.hasOwnProperty("result") && !result.hasOwnProperty("error");
+# }
+
+# function requestJsonRpcIsAbsoluteOk(result) {
+#     return null != result && result.hasOwnProperty("result") && !result.hasOwnProperty("error");
+# }
