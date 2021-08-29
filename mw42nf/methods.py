@@ -1,4 +1,5 @@
-from mw42nf import request_json_rpc_sync, bind_self
+from mw42nf import bind_self, request_json_rpc_sync, request_json_rpc_is_ok, \
+                    ApiResult
 from .models import Response
 
 
@@ -15,9 +16,9 @@ def Logout(self) -> dict:  # 1.2
 
 @bind_self
 def GetLoginState(self) -> dict:  # 1.3
-    raise Exception('TODO') \
- \
- \
+    raise Exception('TODO')
+
+
 @bind_self
 def ChangePassword(self) -> dict:  # 1.4
     raise Exception('TODO')
@@ -65,30 +66,51 @@ def SetAutoRemenberPassword(self) -> dict:  # 1.10
 
 @bind_self
 def GetConnectionState(self) -> Response:  # 3.1
-    return Response(
-        request_json_rpc_sync(
+    res = request_json_rpc_sync(
             self.__name__,
             params='',
             _id='3.1'
-        ))
+        )
+    if request_json_rpc_is_ok(res):
+        return Response(res)
+    else:
+        return Response({'result': {
+            "ConnectionStatus": "0",
+            "ConnectProfile": "china unicom",
+            "UlRate": "",
+            "DlRate": "",
+            "UlBytes": "",
+            "DlBytes": "",
+            "IPv4Adrress": "",
+            "IPv6Adrress": "",
+            "ConnectionTime": "",
+            "ClearCode": 0,
+            "mPdpRejectCount": 0
+        }})
 
 
 @bind_self
-def Connect(self) -> dict:  # 3.2
-    return request_json_rpc_sync(
+def Connect(self) -> ApiResult:  # 3.2
+    res = request_json_rpc_sync(
         self.__name__,
         params='',
         _id='3.2'
     )
+    if request_json_rpc_is_ok(res):
+        return ApiResult.SUCCESS
+    return ApiResult.FAIL
 
 
 @bind_self
-def DisConnect(self) -> dict:  # 3.3
-    return request_json_rpc_sync(
+def DisConnect(self) -> ApiResult:  # 3.3
+    res = request_json_rpc_sync(
         self.__name__,
         params='',
         _id='3.3'
     )
+    if request_json_rpc_is_ok(res):
+        return ApiResult.SUCCESS
+    return ApiResult.FAIL
 
 
 @bind_self

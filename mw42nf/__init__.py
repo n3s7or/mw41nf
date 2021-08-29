@@ -1,4 +1,17 @@
 import services
+from enum import Enum
+
+
+class ApiResult(Enum):
+    SUCCESS = 0
+    FAIL = 1
+
+
+class NwType(Enum):
+    GSM = 1
+    UMTS = 2
+    LTE = 3
+    SCDMA = 9
 
 
 def bind_self(func):
@@ -18,10 +31,9 @@ def request_json_rpc_sync(method, params, _id) -> dict:
     return services.post(url=url, data=data)
 
 
-# function requestJsonRpcIsOk(result) {
-#     return result.hasOwnProperty("result") && !result.hasOwnProperty("error");
-# }
+def request_json_rpc_is_ok(result: dict) -> bool:
+    if not result:
+        return False
 
-# function requestJsonRpcIsAbsoluteOk(result) {
-#     return null != result && result.hasOwnProperty("result") && !result.hasOwnProperty("error");
-# }
+    keys = result.keys()
+    return 'result' in keys and 'error' not in keys
